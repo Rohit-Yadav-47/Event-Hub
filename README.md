@@ -1,8 +1,14 @@
-# Event Hub Platform
+![Screenshot 2025-03-15 204801](https://github.com/user-attachments/assets/efbee5e2-59cc-4601-bdb1-feaab9c000b8)# Event Hub Platform
 
 Event Hub is a modern event discovery and community engagement platform that helps users find events, connect with like-minded individuals, and join communities based on their interests.
 
-![Event Hub Banner](https://picsum.photos/800/200/?random=101)
+![Uploading screencapture-localhost-5174-2025-03-15-20_45_34.png…]()
+![Uploading screencapture-localhost-5174-events-2025-03-15-20_46_19.png…]()
+![screencapture-localhost-5174-events-1-2025-03-15-20_46_47](https://github.com/user-attachments/assets/62257c31-ad52-4ee7-8a22-8ca0e7c621da)
+![Screenshot 2025-03-15 204801](https://github.com/user-attachments/assets/3b721dca-4df2-460b-b997-c6ba42403b03)
+![screencapture-localhost-5174-community-2-2025-03-15-20_48_20](https://github.com/user-attachments/assets/1755d8e2-d5ea-4dd9-a2dc-62e98d9e5548)
+![screencapture-localhost-5174-profile-1-2025-03-15-20_48_33](https://github.com/user-attachments/assets/53fb8799-4f0f-45cc-9386-f68826f06322)
+
 
 ## 🚀 Features
 
