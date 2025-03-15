@@ -6,6 +6,9 @@ https://hubevent.netlify.app/
 
 As the backend is not live due to free limits attaching the screenshot for demo 
 
+
+![image](https://github.com/user-attachments/assets/7568ed5c-ab58-4f3a-9977-b702a7451fa0)
+![image](https://github.com/user-attachments/assets/51d752e0-2b7f-4217-8253-ff030363a3de)
 ![screencapture-localhost-5174-events-1-2025-03-15-20_46_47](https://github.com/user-attachments/assets/bf3d2a61-8916-4d6f-b06d-4b630eea4d4b)
 ![Screenshot 2025-03-15 204801](https://github.com/user-attachments/assets/37076c2a-2ff4-496f-8dd1-418cc47c6ee0)
 ![screencapture-localhost-5174-profile-1-2025-03-15-20_48_33](https://github.com/user-attachments/assets/c41ca3aa-287c-40e0-a777-e588821264d7)
