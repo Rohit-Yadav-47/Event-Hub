@@ -21,7 +21,8 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Load environment variables
-# (Assuming environment variables are managed appropriately elsewhere)
+import os
+groq_api_key = os.environ.get("GROQ_API_KEY", "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")
 
 app = FastAPI()
 
@@ -35,7 +36,7 @@ app.add_middleware(
 )
 
 # Initialize Groq client directly with API key
-client = Groq(api_key="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")
+client = Groq(api_key=groq_api_key)
 
 # Initialize SentenceTransformer model
 model = SentenceTransformer('all-MiniLM-L6-v2')
