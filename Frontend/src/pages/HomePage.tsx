@@ -126,17 +126,9 @@ function LoadingSpinner() {
   );
 }
 
-
-
-
-// Enhanced HeroSection Component
 function HeroSection() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [activeCategory, setActiveCategory] = useState('All');
   const heroRef = useRef(null);
-
-  // Quick filter categories
-  const quickCategories = ['All', 'Music', 'Art', 'Tech', 'Food', 'Sports'];
+  const [animationsLoaded, setAnimationsLoaded] = useState(false);
 
   // Parallax effect
   useEffect(() => {
@@ -148,14 +140,31 @@ function HeroSection() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    console.log(`Searching for: ${searchQuery} in category: ${activeCategory}`);
-    // Implement search functionality here
-  };
+  // Animation initialization
+  useEffect(() => {
+    // Trigger animations after a small delay to ensure proper rendering
+    const timer = setTimeout(() => {
+      setAnimationsLoaded(true);
+      
+      // Refresh AOS to trigger animations that might have been missed
+      if (typeof AOS !== 'undefined') {
+        AOS.refresh();
+      }
+      
+      // Trigger the parallax effect on initial load
+      if (heroRef.current) {
+        const scrollPosition = window.scrollY;
+        heroRef.current.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
+      }
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <section
@@ -163,39 +172,76 @@ function HeroSection() {
       className="relative h-screen bg-cover bg-center flex items-center justify-center overflow-hidden"
       style={{
         backgroundImage:
-'url(https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg?cs=srgb&dl=pexels-wolfgang-1002140-2747449.jpg&fm=jpg)'      }}
+          'url(https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg?cs=srgb&dl=pexels-wolfgang-1002140-2747449.jpg&fm=jpg)'
+      }}
     >
       {/* Overlay with gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80"></div>
 
-      
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 text-center text-white">
-        <h1 
+        <motion.h1 
+          initial={{ opacity: 0, y: -20 }}
+          animate={animationsLoaded ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.2 }}
           data-aos="fade-down"
           data-aos-delay="200"
+          data-aos-once="false"
           className="text-5xl md:text-7xl font-extrabold mb-6 drop-shadow-lg tracking-tight"
         >
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600">
             Discover Extraordinary Events
           </span>
-        </h1>
+        </motion.h1>
         
-        <p 
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          animate={animationsLoaded ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.4 }}
           data-aos="fade-up"
           data-aos-delay="400"
+          data-aos-once="false"
           className="text-xl md:text-2xl mb-10 max-w-3xl mx-auto drop-shadow-lg font-light"
         >
           Join thousands of people discovering unique experiences every day in your city and beyond
-        </p>
+        </motion.p>
         
-   
-      
+        {/* Search bar - Using motion for guaranteed animation */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={animationsLoaded ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="max-w-3xl mx-auto"
+        >
+          <div className="flex flex-col md:flex-row gap-4 bg-white/10 backdrop-blur-md p-2 rounded-full border border-white/20">
+            <div className="flex items-center bg-white/10 rounded-full px-4 py-3 flex-1">
+              <Search className="w-5 h-5 text-gray-200 mr-2" />
+              <input 
+                type="text" 
+                placeholder="Search for events, venues, or categories..." 
+                className="bg-transparent border-none outline-none text-white placeholder-gray-300 w-full"
+              />
+            </div>
+            <div className="flex items-center bg-white/10 rounded-full px-4 py-3 md:w-48">
+              <MapPin className="w-5 h-5 text-gray-200 mr-2" />
+              <select className="bg-transparent border-none outline-none text-white w-full appearance-none cursor-pointer">
+                <option value="" disabled selected className="text-gray-800">Location</option>
+              </select>
+            </div>
+            <button className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-3 rounded-full hover:shadow-lg hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 flex items-center justify-center font-medium">
+              Find Events
+            </button>
+          </div>
+        </motion.div>
         
         {/* Stats */}
-        <div 
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={animationsLoaded ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.8 }}
           data-aos="fade-up"
           data-aos-delay="800"
+          data-aos-once="false"
           className="flex justify-center gap-8 mt-12"
         >
           <div className="flex flex-col items-center">
@@ -210,21 +256,27 @@ function HeroSection() {
             <p className="text-3xl font-bold">1M+</p>
             <p className="text-gray-300">Users</p>
           </div>
-        </div>
+        </motion.div>
       </div>
       
       {/* Scroll indicator */}
-      <div 
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={animationsLoaded ? { opacity: 1 } : {}}
+        transition={{ duration: 1, delay: 1 }}
         className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce"
         data-aos="fade-up"
         data-aos-delay="1000"
+        data-aos-once="false"
       >
         <p className="text-white text-sm mb-2">Scroll to explore</p>
         <ChevronDown className="w-6 h-6 text-white" />
-      </div>
+      </motion.div>
     </section>
   );
 }
+
+
 
 // Enhanced FeaturedEvents Component
 function FeaturedEvents() {
