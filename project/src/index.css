@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth transitions for theme changes */
+:root {
+  --transition-time: 0.3s;
+}
+
+* {
+  transition: background-color var(--transition-time) ease,
+              border-color var(--transition-time) ease,
+              color var(--transition-time) ease;
+}
+
+/* Prevent transition on page load */
+.no-transition * {
+  transition: none !important;
+}
+
+/* Base theme colors */
+body {
+  @apply bg-gray-50 text-gray-900;
+}
+
+/* Override dark mode text colors to keep them dark */
+.dark body {
+  @apply bg-gray-900 text-gray-900;
+}
+
+/* Global override for text color in dark mode */
+
+.dark .text-gray-100,
+.dark .text-gray-200,
+.dark .text-gray-300,
+.dark .text-gray-400 {
+  @apply text-white;
+}

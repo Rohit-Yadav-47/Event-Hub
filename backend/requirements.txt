@@ -1,0 +1,11 @@
+fastapi
+pydantic
+sentence-transformers
+uvicorn[standard]
+numpy
+groq
+python-multipart
+email-validator
+typing-extensions
+jsonschema
+python-dateutil
