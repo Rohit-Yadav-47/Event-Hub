@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 
 # Load environment variables
 import os
-groq_api_key = os.environ.get("GROQ_API_KEY", "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")
+groq_api_key = os.environ.get("GROQ_API_KEY")
 
 app = FastAPI()
 
