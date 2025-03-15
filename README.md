@@ -2,7 +2,7 @@
 
 Event Hub is a modern event discovery and community engagement platform that helps users find events, connect with like-minded individuals, and join communities based on their interests.
 
-
+https://hubevent.netlify.app/
 
 ## 🚀 Features
 
