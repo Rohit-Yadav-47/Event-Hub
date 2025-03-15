@@ -5,24 +5,14 @@ import {
   Calendar,
   MapPin,
   Users,
-  Layers,
   Mail,
   Search,
   ArrowRight,
-  ChevronLeft,
-  ChevronRight,
   Clock,
-  Tag,
   Heart,
   Share2,
   Star,
-  Filter,
-  Globe,
-  Bell,
-  User,
   ChevronDown,
-  Menu,
-  X
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
